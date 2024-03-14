@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  height: 3vh;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  background: #34c94b;
+}
+.search {
+  border: solid 2px #121212 !important;
+  border-radius: 7px;
+  background-color: white;
+}
+.search-desktop {
+  display: none !important;
+}
+.search-mobile {
+  display: block !important;
+}
+input {
+  width: 24rem !important;
+  border-right: solid 2px #121212 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .search-mobile {
+    display: none !important;
+  }
+  .search-desktop {
+    display: block !important;
+  }
+}
