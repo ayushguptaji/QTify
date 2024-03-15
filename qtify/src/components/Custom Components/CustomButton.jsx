@@ -7,7 +7,7 @@ const CustomButton = ({ handler, text }) => {
       <Button
         sx={{ backgroundColor: "black", color: "#34c94b", textTransform: 'none' }}
         type="button"
-        variant="outlined"
+        variant="text"
         name={text}
         onclick={handler}
       >
