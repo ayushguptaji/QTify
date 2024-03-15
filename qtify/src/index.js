@@ -6,7 +6,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const theme = createTheme({
-  
+  typography: {
+    fontFamily: [
+      "Poppins", 
+      "Arial",
+      "sans-serif",
+    ].join(","),
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
