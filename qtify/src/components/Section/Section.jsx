@@ -4,10 +4,12 @@ import { Box, Button, Grid, Typography, CircularProgress } from "@mui/material";
 import "./Section.css";
 import CustomCard from "../Custom Components/CustomCard";
 import axios from "axios";
+import Carousel from "../Carousel/Carousel";
 
-const Section = ({ title, handler, apiURL }) => {
+const Section = ({ title, apiURL }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [items, setItems] = useState([]);
+  const [collapse, setCollapse] = useState({isTrue: "true", text: "Show All"});
   const [loader, setLoader] = useState(true);
 
   const fetchAPIData = async () => {
@@ -65,12 +67,14 @@ const Section = ({ title, handler, apiURL }) => {
               type="button"
               variant="text"
               name="collapse"
-              onclick={handler}
+              onClick={() => {
+                collapse.isTrue?setCollapse({isTrue: false, text: "Collapse"}):setCollapse({isTrue: true, text: "Show All"});
+              }}
             >
-              Collapse
+              {collapse.text}
             </Button>
           </Box>
-          <Grid container rowSpacing={2} columnSpacing={2}>
+          {collapse.isTrue ? <Carousel data={items}/>:<Grid container rowSpacing={2} columnSpacing={2}>
             {items.map((item) => {
               return (
                 <Grid item xs={6} sm={4} md={1.7} key={item.id}>
@@ -82,7 +86,7 @@ const Section = ({ title, handler, apiURL }) => {
                 </Grid>
               );
             })}
-          </Grid>
+          </Grid>}
         </>
       )}
     </Box>

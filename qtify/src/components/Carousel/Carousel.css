@@ -1,0 +1,23 @@
+.swiper-container {
+    padding: 0px 12px 0px 12px;
+}
+.right-swiper{
+    position: absolute;
+    top: 35%;
+    right: 0%;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left-swiper{
+    position: absolute;
+    top: 35%;
+    left: 0%;
+    z-index: 10;
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

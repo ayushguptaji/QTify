@@ -9,7 +9,7 @@ const CustomButton = ({ handler, text }) => {
         type="button"
         variant="text"
         name={text}
-        onclick={handler}
+        onClick={handler}
       >
         {text}
       </Button>
