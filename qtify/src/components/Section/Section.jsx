@@ -5,11 +5,15 @@ import "./Section.css";
 import CustomCard from "../Custom Components/CustomCard";
 import axios from "axios";
 import Carousel from "../Carousel/Carousel";
+import CustomTab from "../Songs Tab/Tab";
 
-const Section = ({ title, apiURL }) => {
+const Section = ({ title, apiURL, isSongsSection }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [items, setItems] = useState([]);
-  const [collapse, setCollapse] = useState({isTrue: "true", text: "Show All"});
+  const [collapse, setCollapse] = useState({
+    isTrue: "true",
+    text: "Show All",
+  });
   const [loader, setLoader] = useState(true);
 
   const fetchAPIData = async () => {
@@ -56,37 +60,52 @@ const Section = ({ title, apiURL }) => {
       ) : (
         <>
           <Box className="section">
-            <Typography variant="body2" className="section-heading">
+            <Typography variant="h6" className="section-heading">
               {title}
             </Typography>
-            <Button
-              sx={{
-                color: "#34c94b",
-                textTransform: "none",
-              }}
-              type="button"
-              variant="text"
-              name="collapse"
-              onClick={() => {
-                collapse.isTrue?setCollapse({isTrue: false, text: "Collapse"}):setCollapse({isTrue: true, text: "Show All"});
-              }}
-            >
-              {collapse.text}
-            </Button>
+            {isSongsSection ? null : (
+              <Button
+                sx={{
+                  color: "#34c94b",
+                  textTransform: "none",
+                }}
+                type="button"
+                variant="text"
+                name="collapse"
+                onClick={() => {
+                  collapse.isTrue
+                    ? setCollapse({ isTrue: false, text: "Collapse" })
+                    : setCollapse({ isTrue: true, text: "Show All" });
+                }}
+              >
+                {collapse.text}
+              </Button>
+            )}
           </Box>
-          {collapse.isTrue ? <Carousel data={items}/>:<Grid container rowSpacing={2} columnSpacing={2}>
-            {items.map((item) => {
-              return (
-                <Grid item xs={6} sm={4} md={1.7} key={item.id}>
-                  <CustomCard
-                    name={item.title}
-                    url={item.image}
-                    follows={item.follows}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>}
+          {collapse.isTrue ? (
+            isSongsSection ? (
+              <CustomTab
+                apiURL="https://qtify-backend-labs.crio.do/genres"
+                songs={items}
+              />
+            ) : (
+              <Carousel data={items} />
+            )
+          ) : (
+            <Grid container rowSpacing={2} columnSpacing={2}>
+              {items.map((item) => {
+                return (
+                  <Grid item xs={6} sm={4} md={1.7} key={item.id}>
+                    <CustomCard
+                      name={item.title}
+                      url={item.image}
+                      follows={item.follows}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
         </>
       )}
     </Box>
