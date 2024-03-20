@@ -51,7 +51,7 @@ const Carousel = ({ data, isSongsSection }) => {
           </SwiperSlide>
         );
       })}
-      <NavigationButton link={swiperRight} name="right-swiper" />
+      <NavigationButton link={swiperRight} name="right-swiper" right/>
       <NavigationButton link={swiperLeft} name="left-swiper" />
     </Swiper>
   );
