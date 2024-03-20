@@ -1,0 +1,9 @@
+.custom-input .MuiInputLabel-outlined.Mui-focused {
+  color: #34c94b !important;
+}
+.custom-input .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #34c94b !important;
+}
+.submitFeedback:hover{
+  background-color: #34ad46!important;
+}

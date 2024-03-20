@@ -1,18 +1,36 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import CustomModal from "./CustomModal";
 
-const CustomButton = ({ handler, text }) => {
+const CustomButton = ({ text }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <Button
-        sx={{ backgroundColor: "black", color: "#34c94b", textTransform: 'none' }}
+        sx={{
+          backgroundColor: "#121212",
+          color: "#34c94b",
+          textTransform: "none",
+          "&:hover": {
+            backgroundColor: "black",
+            color: "green"
+          },
+        }}
         type="button"
         variant="text"
         name={text}
-        onClick={handler}
+        onClick={handleOpen}
       >
         {text}
       </Button>
+      <CustomModal open={open} onClose={handleClose} />
     </>
   );
 };

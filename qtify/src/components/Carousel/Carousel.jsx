@@ -10,8 +10,6 @@ import { Navigation } from "swiper/modules";
 import NavigationButton from "./NavigationButton";
 
 const Carousel = ({ data, isSongsSection }) => {
-  // const [atBeginningSlide, setAtBeginningSlide] = useState({isTrue: true, class: "left-swiper swiper-button-hidden"})
-  // const [atEndSlide, setAtEndSlide] = useState({isTrue: false, class: "right-swiper"})
   return (
     <Swiper
       className="swiper-container"
@@ -21,12 +19,6 @@ const Carousel = ({ data, isSongsSection }) => {
         nextEl: ".right-swiper",
         prevEl: ".left-swiper",
       }}
-      //   on={
-      //         reachBeginning: () => {
-      //             atBeginningSlide.isTrue?setAtBeginningSlide({isTrue: true, class: "left-swiper swiper-button-hidden"}):setAtBeginningSlide({isTrue: false, class: "left-swiper"})},
-      //         reachEnd: () => {
-      //             atEndSlide.isTrue?setAtEndSlide({isTrue: true, class: "right-swiper swiper-button-hidden"}):setAtEndSlide({isTrue: false, class: "right-swiper"})}
-      //   }
       breakpoints={{
         600: {
           slidesPerView: 2,
@@ -53,6 +45,7 @@ const Carousel = ({ data, isSongsSection }) => {
                 name={item.title}
                 url={item.image}
                 follows={item.follows}
+                songsLength={item.songs.length}
               />
             )}
           </SwiperSlide>
