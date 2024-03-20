@@ -69,28 +69,51 @@ const FAQs = ({ title, apiURL }) => {
             >
               FAQs
             </Typography>
-            <Box sx={{ display:"flex", alignItems:"center", flexDirection:"column"}}>
-            {items.map((item, idx) => {
-              return (
-                <Accordion key={idx} defaultExpanded={idx===0} sx={{width: "78.81%", border: "solid 1px #ffffff", borderRadius: "10px!important"}}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{color:"#34c94b", fontSize: "2rem"}}/>}
-                    aria-controls={"panel" + {idx} + "-content"}
-                    id={"panel" + {idx} + "-header"}
-                    sx={{backgroundColor: "#212121", color: "#ffffff",border: "solid 1px #ffffff", borderRadius: "10px"}}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              {items.map((item, idx) => {
+                return (
+                  <Accordion
+                    key={idx}
+                    defaultExpanded={idx === 0}
+                    sx={{
+                      width: "78.81%",
+                      border: "solid 1px #ffffff",
+                      borderRadius: "10px!important",
+                      "@media (max-width: 600px)": {
+                        width: "95%",
+                      },
+                    }}
                   >
-                    {item.question}
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    {item.answer}
-                  </AccordionDetails>
-                </Accordion>
-              );
-            })}
+                    <AccordionSummary
+                      expandIcon={
+                        <ExpandMoreIcon
+                          sx={{ color: "#34c94b", fontSize: "2rem" }}
+                        />
+                      }
+                      aria-controls={"panel" + { idx } + "-content"}
+                      id={"panel" + { idx } + "-header"}
+                      sx={{
+                        backgroundColor: "#212121",
+                        color: "#ffffff",
+                        border: "solid 1px #ffffff",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      {item.question}
+                    </AccordionSummary>
+                    <AccordionDetails>{item.answer}</AccordionDetails>
+                  </Accordion>
+                );
+              })}
             </Box>
           </Stack>
         )}
-        
       </Box>
     </>
   );
